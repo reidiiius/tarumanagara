@@ -1,4 +1,4 @@
-#!/usr/bin/env groovy
+package tarumanagara
 
 class Lamellophone {
 
@@ -125,14 +125,46 @@ class Lamellophone {
     }
 
 
+    def gitar(tombol='z0', wektu=0, tali=('____ ' * 12)) {
+        String[] notasi = [
+            this.En(tali),
+            this.Bn(tali),
+            this.Gn(tali),
+            this.Dn(tali),
+            this.An(tali),
+            this.En(tali)
+        ]
+        println('\t' + tombol + "-gitar-sv" + wektu)
+        for (int i = 0; i < notasi.size(); i++) {
+            println('\t' + notasi[i])
+        }
+ 
+    }
+
+
+    def biola(tombol='z0', wektu=0, tali=('____ ' * 12)) {
+        String[] notasi = [ 
+            this.En(tali),
+            this.An(tali),
+            this.Dn(tali),
+            this.Gn(tali),
+            this.Cn(tali)
+        ]
+        println('\t' + tombol + "-biola-sv" + wektu)
+        for (int i = 0; i < notasi.size(); i++) {
+            println('\t' + notasi[i])
+        }
+    }
+
+
     def pilihan(dhaptar) {
         int siklus = 1
-        dhaptar.each {
-           print '\t' + it
+        for (int i = 0; i < dhaptar.size(); i++) {
+            print '\t' + dhaptar[i]
             if (siklus % 7 == 0) {
                 print '\n'
             } 
-            siklus++
+            siklus++ 
         }
         println('\n')
     }
@@ -165,17 +197,11 @@ class Lamellophone {
         def tali = obyek.logam[tombol]
 
         println('\n')
-        println('\t' + tombol + "-gitar-sv" + wektu)
-        println('\t' + obyek.Bj(tali))
-        println('\t' + obyek.Fn(tali))
-        println('\t' + obyek.Cn(tali))
-        println('\t' + obyek.Gn(tali))
-        println('\t' + obyek.Dn(tali))
-        println('\t' + obyek.An(tali))
-        println('\t' + obyek.En(tali))
-        println('\t' + obyek.Bn(tali))
-        println('\t' + obyek.Fk(tali))
+        obyek.gitar(tombol, wektu, tali)
         println('\n')
+        obyek.biola(tombol, wektu, tali)
+        println('\n')
+
     }
 
 }
