@@ -139,8 +139,7 @@ class Lamellophone {
         println('\t' + tombol + "-gitar-sv" + wektu)
         for (int i = 0; i < agordo.size(); i++) {
             println('\t' + agordo[i])
-        }
- 
+        } 
     }
 
 
@@ -187,53 +186,119 @@ class Lamellophone {
                     tombol = args[0]
                 }
                 else {
-                    String[] naga = []
+                    def naga = []
                     switch (args[0]) {
-                        case 'n':
-                            naga = dhaptar.toList().subList(72, 83)
+
+                       case ~'^j[0-9]*$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^j[0-9]*$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
+                            println()
+                            obyek.pilihan(naga)
+                            return null
+                            break 
+
+                          case ~'^j[0-9]+y[0-9]+$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^j[0-9]+y[0-9]+$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
                             println()
                             obyek.pilihan(naga)
                             return null
                             break
-                        case 'j':
-                            naga = dhaptar.toList().subList( 0, 37)
+ 
+                         case ~'^k[0-9]*$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^k[0-9]*$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
+                            println()
+                            obyek.pilihan(naga)
+                            return null
+                            break  
+
+                         case ~'^k[0-9]+x[0-9]+$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^k[0-9]+x[0-9]+$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
                             println()
                             obyek.pilihan(naga)
                             return null
                             break
-                        case 'k':
-                            naga = dhaptar.toList().subList(37, 72)
+
+                        case ~'^n[0-9]*$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^n[0-9]*$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
+                            println()
+                            obyek.pilihan(naga)
+                            return null
+                            break  
+
+                        case ~'^n[0-9]+(x|y).+$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^n[0-9]+(x|y).+$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
                             println()
                             obyek.pilihan(naga)
                             return null
                             break
-                        case 'x':
-                            def xArr = []
+
+                        case ~'^.*j.+k.+$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^.*j.+k.+$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
+                            println()
+                            obyek.pilihan(naga)
+                            return null
+                            break
+
+                         case ~'^.*k.+j.+$':
+                            for (int i = 0; i < dhaptar.size(); i++) {
+                                if (dhaptar[i] ==~ '^.*k.+j.+$') {
+                                  naga.add(dhaptar[i])
+                                }
+                            }
+                            println()
+                            obyek.pilihan(naga)
+                            return null
+                            break
+ 
+                        case ~'^.*x.*$':
                             for (int i = 0; i < dhaptar.size(); i++) {
                                 if (dhaptar[i] ==~ '^.+x.+$') {
-                                  xArr.add(dhaptar[i])
+                                  naga.add(dhaptar[i])
                                 }
                             }
                             println()
-                            obyek.pilihan(xArr)
+                            obyek.pilihan(naga)
                             return null
                             break
-                        case ~'y':
-                            def yArr = []
+
+                        case ~'^.*y.*$':
                             for (int i = 0; i < dhaptar.size(); i++) {
                                 if (dhaptar[i] ==~ '^.+y.+$') {
-                                  yArr.add(dhaptar[i])
+                                  naga.add(dhaptar[i])
                                 }
                             }
                             println()
-                            obyek.pilihan(yArr)
+                            obyek.pilihan(naga)
                             return null
                             break
-                        case '\u0020'..'\u00FF':
-                            println()
-                            obyek.pilihan(dhaptar)
-                            return null
-                            break
+
                         default:
                             println()
                             obyek.pilihan(dhaptar)
